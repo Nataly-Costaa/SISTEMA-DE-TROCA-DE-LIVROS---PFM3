@@ -29,3 +29,18 @@ created_at TIMESTAMP NOT NULL,
 updated_at TIMESTAMP NOT NULL,
 FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
+
+CREATE TABLE exchange (
+id_exchange INT AUTO_INCREMENT PRIMARY KEY,
+offered_book_id INT NOT NULL,
+received_book_id INT NOT NULL,
+offerer_user_id INT NOT NULL,
+receiver_user_id INT NOT NULL,
+form_of_swap ENUM ("envio","presencial"),
+created_at TIMESTAMP NOT NULL,
+updated_at TIMESTAMP NOT NULL,
+FOREIGN KEY (offered_book_id) REFERENCES book(id_book),
+FOREIGN KEY (received_book_id) REFERENCES book(id_book),
+FOREIGN KEY (offerer_user_id) REFERENCES user(id_user),
+FOREIGN KEY (receiver_user_id) REFERENCES user(id_user)
+);
