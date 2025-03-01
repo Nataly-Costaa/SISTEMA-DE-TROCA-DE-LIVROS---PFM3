@@ -44,3 +44,13 @@ FOREIGN KEY (received_book_id) REFERENCES book(id_book),
 FOREIGN KEY (offerer_user_id) REFERENCES user(id_user),
 FOREIGN KEY (receiver_user_id) REFERENCES user(id_user)
 );
+
+CREATE TABLE literaly_group (
+id_group INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR (100),
+description TEXT (900),
+id_book INT,
+created_at TIMESTAMP NOT NULL,
+updated_at TIMESTAMP NOT NULL,
+FOREIGN KEY (id_book) references book (id_book)
+);
