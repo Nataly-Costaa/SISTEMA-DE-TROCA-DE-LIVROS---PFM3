@@ -9,6 +9,23 @@ CREATE TABLE user (
     location VARCHAR(100),
     phone_number VARCHAR(15),
     password VARCHAR(30),
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE book(
+id_book INT AUTO_INCREMENT PRIMARY KEY,
+id_user INT NOT NULL,
+title VARCHAR(100) NOT NULL, 
+author VARCHAR(60),
+category VARCHAR(50) NOT NULL,
+preservation_status ENUM('Novo','Usado','Desgastado') NOT NULL,
+publication_date DATE,
+synopsis TEXT NOT NULL,
+user_review TEXT NOT NULL,
+publisher VARCHAR(100),
+avalible BOOLEAN NOT NULL,
+created_at TIMESTAMP NOT NULL,
+updated_at TIMESTAMP NOT NULL,
+FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
