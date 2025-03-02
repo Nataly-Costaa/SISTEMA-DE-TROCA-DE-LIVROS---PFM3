@@ -54,3 +54,17 @@ created_at TIMESTAMP NOT NULL,
 updated_at TIMESTAMP NOT NULL,
 FOREIGN KEY (id_book) references book (id_book)
 );
+
+CREATE TABLE owner_history (
+  id_owner INT AUTO_INCREMENT PRIMARY KEY,
+  id_book INT NOT NULL,
+  id_user INT NOT NULL,
+  date_of_acquisition TIMESTAMP NOT NULL,
+  exchange_date TIMESTAMP NULL,
+  status ENUM('Em posse', 'Trocado', 'Doado', 'Perdido'),
+  end_date TIMESTAMP NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  FOREIGN KEY (id_book) REFERENCES book (id_book),
+  FOREIGN KEY (id_user) REFERENCES user (id_user)
+);
