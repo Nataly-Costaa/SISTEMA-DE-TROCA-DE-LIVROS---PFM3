@@ -68,3 +68,13 @@ CREATE TABLE owner_history (
   FOREIGN KEY (id_book) REFERENCES book (id_book),
   FOREIGN KEY (id_user) REFERENCES user (id_user)
 );
+
+CREATE TABLE exchange_history(
+id_exchange_history INT AUTO_INCREMENT PRIMARY KEY,
+id_exchange INT NOT NULL,
+status ENUM ("pendente", "concluída", "cancelada") NOT NULL,
+observations TEXT,
+created_at TIMESTAMP NOT NULL,
+updated_at TIMESTAMP NOT NULL,
+FOREIGN KEY (id_exchange) REFERENCES exchange (id_exchange)
+);
