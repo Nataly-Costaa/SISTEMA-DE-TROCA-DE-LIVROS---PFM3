@@ -78,3 +78,20 @@ created_at TIMESTAMP NOT NULL,
 updated_at TIMESTAMP NOT NULL,
 FOREIGN KEY (id_exchange) REFERENCES exchange (id_exchange)
 );
+
+CREATE TABLE user_rating(
+id_rating INT AUTO_INCREMENT PRIMARY KEY,
+rater_user_id INT NOT NULL,
+rated_user_id INT NOT NULL,
+score INT CHECK(score BETWEEN 1 AND 5),
+comment TEXT,
+created_at TIMESTAMP NOT NULL,
+updated_at TIMESTAMP NOT NULL,
+FOREIGN KEY(rater_user_id) REFERENCES user(id_user),
+FOREIGN KEY(rated_user_id) REFERENCES user(id_user)
+);
+
+-- corrigindo
+ALTER TABLE book CHANGE avalible available BOOLEAN NOT NULL;
+ALTER TABLE literaly_group CHANGE name group_name VARCHAR (100);
+RENAME TABLE literaly_group TO literary_group;
