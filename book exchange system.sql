@@ -1,6 +1,7 @@
 CREATE DATABASE exchange_books;
 USE exchange_books;
 
+-- criando tabelas
 CREATE TABLE user (
 	id_user INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
@@ -95,3 +96,22 @@ FOREIGN KEY(rated_user_id) REFERENCES user(id_user)
 ALTER TABLE book CHANGE avalible available BOOLEAN NOT NULL;
 ALTER TABLE literaly_group CHANGE name group_name VARCHAR (100);
 RENAME TABLE literaly_group TO literary_group;
+
+-- inserindo dados
+INSERT INTO user (first_name, last_name, email, location, phone_number, password, created_at, updated_at)
+VALUES
+('João', 'Silva', 'joao.silva@email.com', 'São Paulo', '1234567890', 'senha123', NOW(), NOW()),
+('Maria', 'Oliveira', 'maria.oliveira@email.com', 'Rio de Janeiro', '0987654321', 'senha456', NOW(), NOW()),
+('Carlos', 'Santos', 'carlos.santos@email.com', 'Belo Horizonte', '1122334455', 'senha789', NOW(), NOW()),
+('Ana', 'Costa', 'ana.costa@email.com', 'Curitiba', '2233445566', 'senha101', NOW(), NOW()),
+('Fernanda', 'Pereira', 'fernanda.pereira@email.com', 'Porto Alegre', '3344556677', 'senha102', NOW(), NOW()),
+('Pedro', 'Rodrigues', 'pedro.rodrigues@email.com', 'Salvador', '4455667788', 'senha103', NOW(), NOW()),
+('Paula', 'Martins', 'paula.martins@email.com', 'Fortaleza', '5566778899', 'senha104', NOW(), NOW()),
+('Lucas', 'Lima', 'lucas.lima@email.com', 'Manaus', '6677889900', 'senha105', NOW(), NOW()),
+('Juliana', 'Dias', 'juliana.dias@email.com', 'Recife', '7788990011', 'senha106', NOW(), NOW()),
+('Roberto', 'Gomes', 'roberto.gomes@email.com', 'Belém', '8899001122', 'senha107', NOW(), NOW()),
+('Cláudia', 'Souza', 'claudia.souza@email.com', 'Natal', '9900112233', 'senha108', NOW(), NOW()),
+('Ricardo', 'Alves', 'ricardo.alves@email.com', 'João Pessoa', '1100223344', 'senha109', NOW(), NOW()),
+('Marcela', 'Mendes', 'marcela.mendes@email.com', 'Vitória', '2200334455', 'senha110', NOW(), NOW()),
+('Tiago', 'Ribeiro', 'tiago.ribeiro@email.com', 'Goiânia', '3300445566', 'senha111', NOW(), NOW()),
+('Maria', 'Cardoso', 'maria.cardoso@email.com', 'Campo Grande', '4400556677', 'senha112', NOW(), NOW());
