@@ -92,6 +92,16 @@ FOREIGN KEY(rater_user_id) REFERENCES user(id_user),
 FOREIGN KEY(rated_user_id) REFERENCES user(id_user)
 );
 
+CREATE TABLE user_group (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_group INT NOT NULL,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_user) REFERENCES user(id_user),
+    FOREIGN KEY (id_group) REFERENCES literary_group(id_group)
+);
+
 -- corrigindo
 ALTER TABLE book CHANGE avalible available BOOLEAN NOT NULL;
 ALTER TABLE literaly_group CHANGE name group_name VARCHAR (100);
