@@ -48,3 +48,28 @@ SELECT
     COUNT(*) AS number_books
 FROM book
 GROUP BY year;
+
+-- lista os usuarios que mais realizaram trocas
+SELECT u.first_name, u.last_name, COUNT(e.id_exchange) AS number_trades
+FROM user u
+JOIN exchange e ON u.id_user = e.offerer_user_id OR u.id_user = e.receiver_user_id
+GROUP BY u.first_name, u.last_name
+ORDER BY number_trades DESC;
+
+-- lista as cidades com mais usuarios cadastrados
+SELECT location, COUNT(*) AS number_users
+FROM user
+GROUP BY location
+ORDER BY number_users DESC
+LIMIT 10;
+
+-- busca os usuários que possuem livros da mesma categoria que outro usuario
+SELECT 
+    CONCAT(u1.first_name, ' ', u1.last_name) AS first_user,
+    CONCAT(u2.first_name, ' ', u2.last_name) AS last_user,
+    b.category
+FROM book b
+JOIN user u1 ON b.id_user = u1.id_user
+JOIN book b2 ON b.category = b2.category AND b.id_user <> b2.id_user
+JOIN user u2 ON b2.id_user = u2.id_user
+GROUP BY first_user, last_user, b.category;
