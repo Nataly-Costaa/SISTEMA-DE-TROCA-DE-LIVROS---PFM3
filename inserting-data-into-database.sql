@@ -379,3 +379,24 @@ CALL insert_user_group(5, 2);
 CALL insert_user_group(6, 3);
 CALL insert_user_group(7, 4);
 CALL insert_user_group(8, 4);
+
+-- atualizando
+UPDATE book
+SET id_user = 2, 
+    updated_at = NOW()
+WHERE id_book = 1;
+
+UPDATE book
+SET id_user = 1, 
+    updated_at = NOW()
+WHERE id_book = 2;
+
+UPDATE book
+SET id_user = 3, 
+    updated_at = NOW()
+WHERE id_book = 4;
+
+UPDATE book
+SET id_user = 4, 
+    updated_at = NOW()
+WHERE id_book = 3;
