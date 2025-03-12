@@ -294,6 +294,15 @@ CALL insert_book(17, 'O Velho e o Mar', 'Ernest Hemingway', 'Ficção', 'Novo', 
 CALL insert_book(18, 'Admirável Mundo Novo', 'Aldous Huxley', 'Distopia', 'Usado', '1932-01-01', 'Uma sociedade futurista onde a liberdade foi substituída pelo controle absoluto.', 'Um clássico da ficção distópica.', 'Biblioteca Azul', TRUE);
 CALL insert_book(19, 'As Vinhas da Ira', 'John Steinbeck', 'Ficção', 'Novo', '1939-04-14', 'Uma família luta para sobreviver durante a Grande Depressão.', 'Um retrato intenso da luta por dignidade.', 'Penguin Books', TRUE);
 CALL insert_book(20, 'Inferno', 'Dan Brown', 'Suspense', 'Novo', '2013-05-14', 'Robert Langdon se vê envolvido em uma conspiração inspirada em Dante Alighieri.', 'Thriller emocionante e repleto de referências históricas.', 'Arqueiro', TRUE);
+CALL insert_book(1, 'Percy Jackson', 'Rick Riordan', 'Aventura', 'Novo', '2005-05-01', 'História de um jovem semideus.', 'Excelente livro para jovens', 'Intrínseca', TRUE);
+CALL insert_book(2, 'Harry Potter', 'J.K. Rowling', 'Fantasia', 'Novo', '1997-06-26', 'A jornada de um bruxo em um mundo mágico.', 'Muito bom e envolvente', 'Rocco', TRUE);
+CALL insert_book(3, 'O Alquimista', 'Paulo Coelho', 'Ficção', 'Usado', '1988-01-01', 'A história de Santiago, um jovem pastor em busca de um tesouro.', 'Excelente livro de autodescoberta', 'HarperCollins', TRUE);
+CALL insert_book(4, 'O Senhor dos Anéis', 'J.R.R. Tolkien', 'Fantasia', 'Novo', '1954-07-29', 'Aventura épica pela Terra-média.', 'Uma obra-prima', 'HarperCollins', TRUE);
+CALL insert_book(5, 'Dom Casmurro', 'Machado de Assis', 'Romance', 'Novo', '1900-01-01', 'A história de Bentinho e Capitu.', 'Obra fundamental para a literatura brasileira', 'Companhia das Letras', TRUE);
+CALL insert_book(6, '1984', 'George Orwell', 'Distopia', 'Desgastado', '1949-06-08', 'A luta de Winston contra o regime totalitário.', 'Muito impactante', 'Companhia das Letras', TRUE);
+CALL insert_book(7, 'O Diário de Anne Frank', 'Anne Frank', 'Biografia', 'Usado', '1947-06-25', 'Relatos de uma adolescente judia escondida durante a Segunda Guerra.', 'Livro tocante e poderoso', 'Record', TRUE);
+CALL insert_book(8, 'O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 'Literatura Infantil', 'Novo', '1943-04-06', 'Uma fábula filosófica sobre amor, amizade e a essência da vida.', 'Uma leitura encantadora e cheia de significados profundos.', 'Editora DEF', TRUE);
+CALL insert_book(1, 'Corte de Espinhos e Rosas', 'Sarah J. Maas', 'Fantasia', 'Novo', '2015-05-05', 'Uma jovem humana é levada para um mundo mágico, onde enfrenta desafios e sentimentos intensos.', 'Uma fantasia envolvente cheia de magia, mistério e romance.', 'Bloomsbury Publishing', FALSE);
 
 CALL insert_exchange(9, 10, 9, 10, 'envio');
 CALL insert_exchange(11, 12, 11, 12, 'presencial');
@@ -305,6 +314,10 @@ CALL insert_exchange(17, 18, 17, 18, 'presencial');
 CALL insert_exchange(19, 20, 19, 20, 'envio');
 CALL insert_exchange(10, 17, 10, 17, 'presencial');
 CALL insert_exchange(14, 19, 14, 19, 'envio');
+CALL insert_exchange(1, 2, 1, 2, 'envio');
+CALL insert_exchange(3, 4, 3, 4, 'presencial');
+CALL insert_exchange(5, 6, 5, 6, 'envio');
+CALL insert_exchange(7, 8, 7, 8, 'presencial');
 
 CALL insert_user_rating(9, 10, 5, 'Troca rápida e livro em ótimo estado.');
 CALL insert_user_rating(10, 9, 4, 'O livro tinha algumas anotações, mas estava bem conservado.');
@@ -317,6 +330,11 @@ CALL insert_user_rating(17, 18, 5, 'Excelente experiência, recomendo!');
 CALL insert_user_rating(19, 20, 3, 'O livro estava bem desgastado, mas a troca foi tranquila.');
 CALL insert_user_rating(10, 17, 5, 'Ótima troca! Livro veio como novo.');
 CALL insert_user_rating(14, 19, 4, 'O livro tinha algumas páginas dobradas, mas nada grave.');
+CALL insert_user_rating(1, 2, 5, 'Excelente experiência, muito atencioso!');
+CALL insert_user_rating(2, 1, 5, 'Amei o livro, muito bom!');
+CALL insert_user_rating(3, 4, 4, 'Ótima troca de livros, o livro estava em bom estado.');
+CALL insert_user_rating(5, 4, 3, 'A troca foi boa, mas o livro tinha algumas marcas de uso.');
+CALL insert_user_rating(7, 8, 5, 'Adorei o livro, estava em perfeito estado e a troca foi rápida.');
 
 CALL insert_literary_group('As Crônicas de Nárnia', 'Grupo para fãs da série As Crônicas de Nárnia e suas histórias encantadoras.', 9);
 CALL insert_literary_group('Crime e Castigo', 'Grupo de leitura e discussão sobre Crime e Castigo, um romance psicológico.', 10);
@@ -329,6 +347,13 @@ CALL insert_literary_group('It: A Coisa', 'Grupo de leitura e análise dos eleme
 CALL insert_literary_group('A Metamorfose', 'Grupo literário dedicado à interpretação das metáforas e simbolismos da obra de Kafka.', 18);
 CALL insert_literary_group('A Menina que Roubava Livros', 'Grupo para reflexão sobre a Segunda Guerra sob a perspectiva da literatura.', 19);
 CALL insert_literary_group('O Hobbit', 'Grupo voltado para a leitura e debate sobre a jornada de Bilbo Bolseiro.', 20);
+CALL insert_literary_group('Percy Jackson', 'Grupo dedicado à leitura de Percy Jackson e discussão sobre a aventura e mitologia.', 1);
+CALL insert_literary_group('Harry Potter', 'Grupo de leitura e discussão sobre a série Harry Potter e seu mundo mágico.', 2);
+CALL insert_literary_group('O Alquimista', 'Grupo para discutir as lições de autodescoberta e o simbolismo de O Alquimista.', 3);
+CALL insert_literary_group('O Senhor dos Anéis', 'Grupo literário focado na leitura e análise da obra épica de Tolkien, O Senhor dos Anéis.', 4);
+CALL insert_literary_group('Dom Casmurro', 'Grupo de leitura e discussão sobre a obra-prima de Machado de Assis e seus dilemas morais.', 5);
+CALL insert_literary_group('1984', 'Grupo dedicado a explorar os temas distópicos e políticos de 1984, de George Orwell.', 6);
+CALL insert_literary_group('O Diário de Anne Frank', 'Grupo literário voltado para a leitura e reflexão sobre o testemunho de Anne Frank.', 7);
 
 CALL insert_user_group(9, 9);
 CALL insert_user_group(10, 9);
@@ -346,3 +371,11 @@ CALL insert_user_group(19, 19);
 CALL insert_user_group(20, 20);
 CALL insert_user_group(10, 16);
 CALL insert_user_group(14, 19);
+CALL insert_user_group(1, 1);
+CALL insert_user_group(2, 1);
+CALL insert_user_group(3, 2);
+CALL insert_user_group(4, 2);
+CALL insert_user_group(5, 2);
+CALL insert_user_group(6, 3);
+CALL insert_user_group(7, 4);
+CALL insert_user_group(8, 4);
