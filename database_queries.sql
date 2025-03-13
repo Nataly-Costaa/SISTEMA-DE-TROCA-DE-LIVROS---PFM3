@@ -17,12 +17,17 @@ FROM book
 GROUP BY decade
 ORDER BY decade;
 
--- lista os livros que nunca foram trocados
-SELECT b.title, b.author
+-- autores com 2 ou mais livros que não foram trocados
+SELECT b.author, COUNT(*) AS total_books
 FROM book b
 LEFT JOIN exchange e ON b.id_book = e.offered_book_id OR b.id_book = e.received_book_id
-WHERE e.id_exchange IS NULL;
+WHERE e.id_exchange IS NULL
+GROUP BY b.author
+HAVING total_books >= 2
+ORDER BY total_books DESC;
 
+
+-- Nataly
 -- Mostrar apenas os primeiros nomes iguais que têm 3 ou mais pessoas
 SELECT first_name, COUNT(*) AS number_user
 FROM user
