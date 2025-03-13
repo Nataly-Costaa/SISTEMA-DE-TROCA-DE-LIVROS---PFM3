@@ -85,3 +85,26 @@ FROM user
 GROUP BY YEAR(created_at), MONTH(created_at)
 ORDER BY year, month;
 
+-- Bruna Tereza
+-- Conta a média das avaliações de cada usuário 
+SELECT rated_user_id, AVG(score) AS average_rating
+FROM user_rating
+GROUP BY rated_user_id
+LIMIT 10;
+
+-- Conta quantas avaliações cada livro recebeu e sua média
+SELECT book.title, COUNT(user_rating.id_rating) AS total_ratings,
+AVG(user_rating.score) AS average_score
+FROM book
+JOIN user_rating ON book.id_book = user_rating.rated_user_id
+GROUP BY book.id_book
+ORDER BY total_ratings DESC
+LIMIT 10;
+
+-- Conta quantas mudanças de posse cada livro teve
+SELECT book.title, COUNT(*) AS total_owner_changes
+FROM book
+JOIN owner_history ON book.id_book = owner_history.id_book
+GROUP BY book.id_book
+ORDER BY total_owner_changes DESC
+LIMIT 10;
