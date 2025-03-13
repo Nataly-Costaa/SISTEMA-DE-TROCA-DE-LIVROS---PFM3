@@ -23,53 +23,22 @@ FROM book b
 LEFT JOIN exchange e ON b.id_book = e.offered_book_id OR b.id_book = e.received_book_id
 WHERE e.id_exchange IS NULL;
 
-
--- João Pedro 
--- Conta quantos livros existem em cada mudança de posse
-SELECT status, COUNT(*) AS total_books
-FROM owner_history
-GROUP BY status;
-
--- Conta o total de livros disponíveis por cada user
-SELECT user.first_name, user.last_name, COUNT(*) AS total_books_available
+-- Mostrar apenas os primeiros nomes iguais que têm 3 ou mais pessoas
+SELECT first_name, COUNT(*) AS number_user
 FROM user
-JOIN book ON book.id_user = user.id_user
-WHERE book.available = TRUE
-GROUP BY user.id_user
-ORDER BY total_books_available DESC;
+GROUP BY first_name
+HAVING COUNT(*) >=3;
 
--- Conta o quantos livros foram publicados antes de 1900, entre 1900 e 1999, e nos anos 2000
+-- Conta quantos livros estão disponíveis e quantos não
 SELECT 
-    CASE 
-        WHEN publication_date < '1900-01-01' THEN 'Antes de 1900'
-        WHEN publication_date BETWEEN '1900-01-01' AND '1999-12-31' THEN '1900-1999'
-        ELSE 'Anos 2000'
-    END AS year,
+    available, 
     COUNT(*) AS number_books
 FROM book
-GROUP BY year;
+GROUP BY available;
 
--- lista os usuarios que mais realizaram trocas
-SELECT u.first_name, u.last_name, COUNT(e.id_exchange) AS number_trades
-FROM user u
-JOIN exchange e ON u.id_user = e.offerer_user_id OR u.id_user = e.receiver_user_id
-GROUP BY u.first_name, u.last_name
-ORDER BY number_trades DESC;
-
--- lista as cidades com mais usuarios cadastrados
-SELECT location, COUNT(*) AS number_users
-FROM user
-GROUP BY location
-ORDER BY number_users DESC
-LIMIT 10;
-
--- busca os usuários que possuem livros da mesma categoria que outro usuario
+-- Conta quantos usuários tem o as combinações “ia”, “eu”, e quantos não tem essas combinações em seus nomes
 SELECT 
-    CONCAT(u1.first_name, ' ', u1.last_name) AS first_user,
-    CONCAT(u2.first_name, ' ', u2.last_name) AS last_user,
-    b.category
-FROM book b
-JOIN user u1 ON b.id_user = u1.id_user
-JOIN book b2 ON b.category = b2.category AND b.id_user <> b2.id_user
-JOIN user u2 ON b2.id_user = u2.id_user
-GROUP BY first_user, last_user, b.category;
+    COUNT(CASE WHEN first_name LIKE '%ia%' THEN 1 END) AS total_ia,
+    COUNT(CASE WHEN first_name LIKE '%eu%' THEN 1 END) AS total_eu,
+    COUNT(CASE WHEN first_name NOT LIKE '%ia%' AND first_name NOT LIKE '%eu%' THEN 1 END) AS total_others
+FROM user;
