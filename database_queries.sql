@@ -64,3 +64,24 @@ COUNT(*) AS user_count
 FROM user
 GROUP BY city;
 
+-- Luísa Silva
+-- Conta quantos usuários tem o primeiro nome que começa com cada letra existente no sistema. Por exemplo: Quantos usuários começam com a letra A?
+SELECT LEFT(first_name, 1) AS inicial, COUNT(*) AS total_users
+FROM user
+GROUP BY LEFT(first_name, 1)
+ORDER BY inicial;
+
+-- Conta quantos títulos dos livros começam com A ou O
+SELECT 
+    COUNT(CASE WHEN title LIKE 'A%' THEN 1 END) AS total_A_books,
+    COUNT(CASE WHEN title LIKE 'O%' THEN 1 END) AS total_O_books
+    FROM book;
+
+-- Conta quantos usuários foram cadastrados por mês
+SELECT
+YEAR(created_at) AS year, MONTH(created_at) AS month,
+COUNT(*) AS total_users
+FROM user
+GROUP BY YEAR(created_at), MONTH(created_at)
+ORDER BY year, month;
+
