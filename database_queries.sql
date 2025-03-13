@@ -113,3 +113,30 @@ JOIN owner_history ON book.id_book = owner_history.id_book
 GROUP BY book.id_book
 ORDER BY total_owner_changes DESC
 LIMIT 10;
+
+-- João Pedro
+-- Conta quantos livros existem em cada mudança de posse
+SELECT status, COUNT(*) AS total_books
+FROM owner_history
+GROUP BY status;
+
+-- Conta o total de livros disponíveis por cada user a partir de 2
+SELECT user.first_name, user.last_name, COUNT(*) AS total_books_available
+FROM user
+JOIN book ON book.id_user = user.id_user
+WHERE book.available = TRUE
+GROUP BY user.id_user
+HAVING total_books_available >=2
+ORDER BY total_books_available DESC
+LIMIT 15;
+
+-- Conta o quantos livros foram publicados antes de 1900, entre 1900 e 1999, e nos anos 2000
+SELECT 
+    CASE 
+        WHEN publication_date < '1900-01-01' THEN 'Antes de 1900'
+        WHEN publication_date BETWEEN '1900-01-01' AND '1999-12-31' THEN '1900-1999'
+        ELSE 'Anos 2000'
+    END AS year,
+    COUNT(*) AS number_books
+FROM book
+GROUP BY year;
