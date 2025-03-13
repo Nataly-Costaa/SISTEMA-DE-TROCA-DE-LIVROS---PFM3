@@ -42,3 +42,25 @@ SELECT
     COUNT(CASE WHEN first_name LIKE '%eu%' THEN 1 END) AS total_eu,
     COUNT(CASE WHEN first_name NOT LIKE '%ia%' AND first_name NOT LIKE '%eu%' THEN 1 END) AS total_others
 FROM user;
+
+-- Luiza Pureza
+-- Conta quantos livros tem cada estado de preservação
+SELECT preservation_status, COUNT(*) AS number_books
+FROM book 
+GROUP BY preservation_status;
+
+-- Conta quantos livros tem cada categoria
+SELECT category, COUNT(*) AS number_books
+FROM book 
+GROUP BY category;
+
+-- Conta quantos usuários moram nas cidades mais populosas do nordeste(Salvador, Fortaleza e Recife), e quantos moram em outras cidades.
+SELECT 
+CASE 
+WHEN location IN ('Salvador', 'Fortaleza', 'Recife') THEN 'Cidades mais populosas do Nordeste'
+ELSE 'Outras cidades'
+END AS city,
+COUNT(*) AS user_count
+FROM user
+GROUP BY city;
+
